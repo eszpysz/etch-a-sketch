@@ -1,13 +1,17 @@
 .container {
-    width: 100%;
-    height: 100vh;
     display: flex;
-    flex-wrap: wrap;
+    border: 1px solid black;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    height: 256px;
+    width: 256px;
 }
 
-.container .div {
-    height: 16px;
-    width: 16px;
+#button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
 }
