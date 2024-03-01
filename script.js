@@ -2,6 +2,8 @@ const container = document.querySelector('.container');
 
 const btn = document.querySelector('button');
 
+let interactionsCount = 0;
+
 startDrawing();
 
 btn.addEventListener('click', () => {
@@ -18,6 +20,14 @@ btn.addEventListener('click', () => {
         startDrawing();
     } else {
         alert('ERROR!\nPlease, enter a number between 1-50.');
+    }
+});
+
+container.addEventListener('mouseover', (e) => {
+    const target = e.target;
+    if (target.classList.contains('div')) {
+        interactionsCount++;
+        target.style.backgroundColor = getRandomRGB();
     }
 });
 
@@ -39,9 +49,10 @@ function removePreviousDrawing() {
     });
 }
 
-container.addEventListener('mouseover', (e) => {
-    const target = e.target;
-    if (target.classList.contains('div')) {
-        target.style.backgroundColor = 'red';
-    }
-});
+function getRandomRGB() {
+    let hue = Math.floor(Math.random() * 360);
+    let saturation = '100%';
+    let lightness = Math.max(0, 100 - (10 * interactionsCount)) + '%';
+
+    return 'hsl(' + hue + ', ' + saturation + ', ' + lightness + ')';
+}
